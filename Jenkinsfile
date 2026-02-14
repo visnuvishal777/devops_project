@@ -1,34 +1,19 @@
-pipeline {
+pipeline{
     agent any
-
-    environment {
-        AWS_DEFAULT_REGION = "us-east-1"
-    }
-
     stages {
-
-        stage('Source Code') {
+        stage('source code') {
             steps {
-                echo 'Cloning repository...'
-                git branch: 'main', url: 'https://github.com/visnuvishal777/devops_project.git'
+                echo 'Cloning...'
+                   git branch: 'main', url: 'https://github.com/visnuvishal777/devops_project.git'
+
             }
         }
-
-        stage('Terraform Init') {
+        stage('terraform') {
             steps {
+                echo 'Deploying...'
                 sh 'terraform init'
-            }
-        }
-
-        stage('Terraform Plan') {
-            steps {
-                sh 'terraform plan -var="ami_id=ami-073130f74f5ffb161"'
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                sh 'terraform apply -var="ami_id=ami-073130f74f5ffb161" -auto-approve'
+                sh 'terraform plan -var="ami_id=ami-0b6c6ebed2801a5cb" '
+                sh 'terraform apply -var="ami_id=ami-0b6c6ebed2801a5cb" -auto-approve'
             }
         }
     }
