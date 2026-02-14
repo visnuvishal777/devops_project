@@ -10,7 +10,7 @@ pipeline {
         stage('Source Code') {
             steps {
                 echo 'Cloning repository...'
-                git branch: 'main', url: 'https://github.com/vishanthkannan/day6.git'
+                git branch: 'main', url: 'https://github.com/visnuvishal777/devops_project.git'
             }
         }
 
