@@ -22,13 +22,13 @@ pipeline {
 
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -var="ami=ami-073130f74f5ffb161"'
+                sh 'terraform plan -var="ami_id=ami-073130f74f5ffb161"'
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -var="ami=ami-073130f74f5ffb161" -auto-approve'
+                sh 'terraform apply -var="ami_id=ami-073130f74f5ffb161" -auto-approve'
             }
         }
     }
